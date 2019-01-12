@@ -19,10 +19,13 @@
  */
 package com.org.persistence.beans;
 
-import com.org.framework.object.AbstractDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -34,7 +37,15 @@ import java.util.Date;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SysUser extends AbstractDO {
+public class SysUser implements Serializable {
+
+    private static final long serialVersionUID = 4334915314939463161L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private Date createTime;
+    private Date updateTime;
     private String username;
     private String password;
     private String nickname;

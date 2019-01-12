@@ -19,9 +19,14 @@
  */
 package com.org.persistence.beans;
 
-import com.org.framework.object.AbstractDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author yadong.zhang (yadong.zhang0415(a)gmail.com)
@@ -32,7 +37,19 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SysRoleResources extends AbstractDO {
+public class SysRoleResources implements Serializable {
+
+    private static final long serialVersionUID = -49506770507025293L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private Long roleId;
+
     private Long resourcesId;
+
+    private Date createTime;
+
+    private Date updateTime;
 }
